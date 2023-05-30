@@ -1,7 +1,5 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 
 public class Display extends JFrame {
@@ -21,7 +19,7 @@ public class Display extends JFrame {
         add(panel);
         setSize(width, height);
         panel.setSize(width, height);
-        setDefaultCloseOperation(3);
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
         panel.setVisible(true);
     }
