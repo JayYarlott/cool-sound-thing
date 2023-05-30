@@ -12,4 +12,6 @@ public class Main {
         thing.render(im);
     }
 
+
+
 }
