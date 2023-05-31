@@ -10,7 +10,7 @@ public class SpeedProfile {
         this.xs = sxs;
         this.ys = sys;
     }
-    public double speed(int d) {
+    public double speed(double d) {
         int u = 1;
         for (int i = 1; i < xs.length; i++) {
             if (d < xs[i]) {
