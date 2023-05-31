@@ -40,7 +40,7 @@ public class Main {
         ((Graphics2D)g).setStroke(new BasicStroke(3));
         SpeedProfile sp = new SpeedProfile();
         for(int i = 0; i<list.size(); i++){
-            list.get(i).tupdate();
+            list.get(i).update(sp, 0.001);
         }
         g.clearRect(0,0,500,500);
         g.setColor(Color.BLACK);
@@ -51,13 +51,13 @@ public class Main {
         for(int i = 1; i<list.size(); i++){
             int x2 = list.get(i).rX();
             int y2 = list.get(i).rY();
-            //g.drawLine(x1, y1, x2, y2);
-            g.drawLine(x1,y1,x1,y1);
+            g.drawLine(x1, y1, x2, y2);
+            //g.drawLine(x1,y1,x1,y1);
             x1 = x2;
             y1 = y2;
         }
-        //g.drawLine(x1, y1, l0.rX(), l0.rY());
-        g.drawLine(x1,y1,x1,y1);
+        g.drawLine(x1, y1, l0.rX(), l0.rY());
+        //g.drawLine(x1,y1,x1,y1);
     }
 
 }
