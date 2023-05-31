@@ -8,7 +8,7 @@ public class Main {
         int w = 500, h = 500;
         var thing = new Display(w, h);
         BufferedImage im = new BufferedImage(w, h, BufferedImage.TYPE_INT_RGB);
-        var parts = testset(100);
+        var parts = testset(1000);
         for(int i = 0; i<100000; i++){
             Graphics g = thing.strategy.getDrawGraphics();
             long time = System.nanoTime();
@@ -30,7 +30,7 @@ public class Main {
         var ret = new ArrayList<Particle>(n);
         double step = 2*Math.PI/n;
         for(int i = 0; i<n; i++){
-            ret.add(new Particle(0,0, 1500*Math.cos(step*i), 1500*Math.sin(step*i)));
+            ret.add(new Particle(0,300, Math.cos(step*i), Math.sin(step*i)));
         }
         return ret;
     }
@@ -51,13 +51,13 @@ public class Main {
         for(int i = 1; i<list.size(); i++){
             int x2 = list.get(i).rX();
             int y2 = list.get(i).rY();
-            g.drawLine(x1, y1, x2, y2);
-            //g.drawLine(x1,y1,x1,y1);
+            //g.drawLine(x1, y1, x2, y2);
+            g.drawLine(x1,y1,x1,y1);
             x1 = x2;
             y1 = y2;
         }
-        g.drawLine(x1, y1, l0.rX(), l0.rY());
-        //g.drawLine(x1,y1,x1,y1);
+        //g.drawLine(x1, y1, l0.rX(), l0.rY());
+        g.drawLine(x1,y1,x1,y1);
     }
 
 }

@@ -18,6 +18,6 @@ public class SpeedProfile {
                 break;
             }
         }
-        return ys[u-1] + (d-ys[u-1])*(ys[u] - ys[u-1])/(xs[u] - xs[u-1]);
+        return ys[u-1] + (d-xs[u-1])*(ys[u] - ys[u-1])/(xs[u] - xs[u-1]);
     }
 }
