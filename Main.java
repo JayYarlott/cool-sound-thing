@@ -13,7 +13,7 @@ public class Main {
         thing.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                parts.addAll(spawnAt(e.getX()*100-250, e.getY()*100-250, 100));
+                parts.addAll(spawnAt((e.getX()-250)*100, (e.getY()-250)*100, 100));
             }
         });
         BufferedImage im = new BufferedImage(w, h, BufferedImage.TYPE_INT_RGB);
