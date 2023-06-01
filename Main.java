@@ -1,4 +1,6 @@
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
@@ -7,8 +9,15 @@ public class Main {
     public static void main(String[] args){
         int w = 500, h = 500;
         var thing = new Display(w, h);
-        BufferedImage im = new BufferedImage(w, h, BufferedImage.TYPE_INT_RGB);
         var parts = testset(1000);
+        thing.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                parts.addAll(spawnAt(e.getX(), e.getY(), 100));
+            }
+        });
+        BufferedImage im = new BufferedImage(w, h, BufferedImage.TYPE_INT_RGB);
+
         for(int i = 0; i<100000; i++){
             Graphics g = thing.strategy.getDrawGraphics();
             long time = System.nanoTime();
@@ -26,6 +35,15 @@ public class Main {
 
     }
 
+    private static ArrayList<Particle> spawnAt(int x, int y, int n){
+        var ret = new ArrayList<Particle>(n);
+        double step = 2*Math.PI/n;
+        for(int i = 0; i<n; i++){
+            ret.add(new Particle(x, y, Math.cos(step*i), Math.sin(step*i)));
+        }
+        return ret;
+    }
+
     private static ArrayList<Particle> testset(int n){
         var ret = new ArrayList<Particle>(n);
         double step = 2*Math.PI/n;
@@ -40,7 +58,7 @@ public class Main {
         ((Graphics2D)g).setStroke(new BasicStroke(3));
         SpeedProfile sp = new SpeedProfile();
         for(int i = 0; i<list.size(); i++){
-            list.get(i).update(sp, 0.001);
+            list.get(i).update(sp, 0.01);
         }
         g.clearRect(0,0,500,500);
         g.setColor(Color.BLACK);
