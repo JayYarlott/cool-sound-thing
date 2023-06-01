@@ -9,11 +9,11 @@ public class Main {
     public static void main(String[] args){
         int w = 500, h = 500;
         var thing = new Display(w, h);
-        var parts = testset(1000);
+        var parts = testset(100);
         thing.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                parts.addAll(spawnAt(e.getX(), e.getY(), 100));
+                parts.addAll(spawnAt(e.getX()*100-250, e.getY()*100-250, 100));
             }
         });
         BufferedImage im = new BufferedImage(w, h, BufferedImage.TYPE_INT_RGB);
@@ -69,13 +69,13 @@ public class Main {
         for(int i = 1; i<list.size(); i++){
             int x2 = list.get(i).rX();
             int y2 = list.get(i).rY();
-            //g.drawLine(x1, y1, x2, y2);
-            g.drawLine(x1,y1,x1,y1);
+            g.drawLine(x1, y1, x2, y2);
+            //g.drawLine(x1,y1,x1,y1);
             x1 = x2;
             y1 = y2;
         }
-        //g.drawLine(x1, y1, l0.rX(), l0.rY());
-        g.drawLine(x1,y1,x1,y1);
+        g.drawLine(x1, y1, l0.rX(), l0.rY());
+        //g.drawLine(x1,y1,x1,y1);
     }
 
 }

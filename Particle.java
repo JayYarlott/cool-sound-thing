@@ -44,7 +44,7 @@ public class Particle {
         return (int)(x/100) + 250;
     }
     public int rY(){
-        return (int)(-y/100) + 250;
+        return (int)(y/100) + 250;
     }
 
     @Override
