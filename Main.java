@@ -8,6 +8,7 @@ public class Main {
 
     public static void main(String[] args){
         int w = 500, h = 500;
+        int rwidth = 2000, rheight = 500;
         var thing = new Display(w, h);
         var parts = testset(100);
         thing.addMouseListener(new MouseAdapter() {
@@ -16,11 +17,10 @@ public class Main {
                 parts.addAll(spawnAt((e.getX()-250)*100, (e.getY()-250)*100, 100));
             }
         });
-        BufferedImage im = new BufferedImage(w, h, BufferedImage.TYPE_INT_RGB);
 
         for(int i = 0; i<100000; i++){
             Graphics g = thing.strategy.getDrawGraphics();
-            long time = System.nanoTime();
+            //long time = System.nanoTime();
             render(parts, g);
 //            System.out.println("Elapsed millis:" + (System.nanoTime()-time)/1000000.0);
             g.dispose();
@@ -69,13 +69,13 @@ public class Main {
         for(int i = 1; i<list.size(); i++){
             int x2 = list.get(i).rX();
             int y2 = list.get(i).rY();
-            g.drawLine(x1, y1, x2, y2);
-            //g.drawLine(x1,y1,x1,y1);
+            //g.drawLine(x1, y1, x2, y2);
+            g.drawLine(x1,y1,x1,y1);
             x1 = x2;
             y1 = y2;
         }
-        g.drawLine(x1, y1, l0.rX(), l0.rY());
-        //g.drawLine(x1,y1,x1,y1);
+        //g.drawLine(x1, y1, l0.rX(), l0.rY());
+        g.drawLine(x1,y1,x1,y1);
     }
 
 }
