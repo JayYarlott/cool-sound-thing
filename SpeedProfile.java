@@ -7,8 +7,8 @@ public class SpeedProfile {
         this.ys = ys;
     }
     public SpeedProfile() {
-        this.xs = sxs;
-        this.ys = sys;
+        this.xs = new double[]{-1500, 300, 2000};
+        this.ys = new double[]{1000,500,1000};
     }
     public double speed(double d) {
         int u = 1;
