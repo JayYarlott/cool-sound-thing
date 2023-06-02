@@ -9,6 +9,8 @@ public class Main {
     public static void main(String[] args){
         int w = 500, h = 500;
         int rwidth = 2000, rheight = 500;
+        double scale = 0.01;
+
         var thing = new Display(w, h);
         var parts = testset(100);
         thing.addMouseListener(new MouseAdapter() {
@@ -55,12 +57,16 @@ public class Main {
 
     private static void render(ArrayList<Particle> list, Graphics g){
         //we assume list is sorted
-        ((Graphics2D)g).setStroke(new BasicStroke(3));
+        Graphics2D g2 = (Graphics2D) g;
+        g2.setStroke(new BasicStroke(3));
+        g2.setPaint(new GradientPaint(0, 0, new Color(255,255,255), 0, 500, new Color(0, 0, 255),true));
+        g.clearRect(0,0,500,500);
+        g2.fill(new Rectangle(0,0,500, 500));
         SpeedProfile sp = new SpeedProfile();
         for(int i = 0; i<list.size(); i++){
             list.get(i).update(sp, 0.01);
         }
-        g.clearRect(0,0,500,500);
+
         g.setColor(Color.BLACK);
         Particle l0 = list.get(0);
         int x1 = l0.rX();

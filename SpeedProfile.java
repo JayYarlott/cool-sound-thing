@@ -11,13 +11,17 @@ public class SpeedProfile {
         this.ys = new double[]{1000,500,1000};
     }
     public double speed(double d) {
-        int u = 1;
+        if(d<xs[0]){
+            d = xs[0];
+        } else if (d>xs[xs.length-1]) {
+            d = xs[xs.length-1];
+        }
+
         for (int i = 1; i < xs.length; i++) {
-            if (d < xs[i]) {
-                u = i;
-                break;
+            if (d <= xs[i]) {
+                return ys[i-1] + (d-xs[i-1])/(xs[i]-xs[i-1]) * (ys[i]-ys[i-1]);
             }
         }
-        return ys[u-1] + (d-xs[u-1])*(ys[u] - ys[u-1])/(xs[u] - xs[u-1]);
+        return d;
     }
 }
