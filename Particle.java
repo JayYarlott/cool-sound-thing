@@ -26,8 +26,6 @@ public class Particle {
         y += vy*dt;
         double s2 = speedcalc.speed(y);
         double th1 = atan(mx*vx/my/vy);
-        if(id > 500)
-            System.out.println(th1);
         double th2;
         double temp = s2 * sin(th1)/s1;
         if (temp > 1) {
